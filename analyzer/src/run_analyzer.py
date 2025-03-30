@@ -1,6 +1,7 @@
 import glob
 import os.path
 from time import sleep
+from attachment_analyzer import start_attachment_analysis
 from config import config
 import analyzer
 from utils import get_logger
@@ -46,6 +47,7 @@ def remove_file(file_name: str):
 
 if __name__ == "__main__":
     try:
+        start_attachment_analysis()
         run()
     except KeyboardInterrupt:
         pass

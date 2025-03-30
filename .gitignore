@@ -8,3 +8,5 @@ extras/
 config.ini
 logs/
 log.log
+integrations.ini
+test.py

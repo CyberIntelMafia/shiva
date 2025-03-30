@@ -1,4 +1,4 @@
-from sqlalchemy import Column, BIGINT, ForeignKey, String, CHAR
+from sqlalchemy import Column, BIGINT, ForeignKey, String, CHAR, Boolean
 from models.base import Base, CRUDBase, TimeStampedMixin
 
 
@@ -16,11 +16,10 @@ class Attachments(Base, CRUDBase, TimeStampedMixin):
     attachment_file_url = Column(
         String, nullable=False, comment="Path/URL to the external storage"
     )
-    file_extension = Column(
-        String, comment="File extension (e.g., .jpg, .pdf, .exe)"
-    )
+    file_extension = Column(String, comment="File extension (e.g., .jpg, .pdf, .exe)")
     file_sha256 = Column(
         CHAR(64),
         nullable=False,
         comment="Hash of the file (SHA256) for file identification",
     )
+    is_analyzed = Column(Boolean, default=False, server_default="false")
