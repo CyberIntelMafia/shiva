@@ -20,6 +20,8 @@ RUN python3 -m venv analyzer
 
 COPY . /home/shiva-spampot/analyzer/
 RUN analyzer/bin/pip install -r analyzer/requirements.txt
-RUN cp analyzer/config.ini.example analyzer/config.ini
 
+# Copy the config.ini.example only if config.ini does not exist
+RUN if [ ! -f analyzer/config.ini ]; then cp analyzer/config.ini.example analyzer/config.ini; fi
+RUN if [ ! -f analyzer/integrations.ini ]; then cp analyzer/integrations.ini.example analyzer/integrations.ini; fi
 CMD ["analyzer/bin/python3", "analyzer/run_analyzer.py"]
